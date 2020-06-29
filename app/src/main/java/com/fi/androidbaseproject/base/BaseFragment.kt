@@ -2,15 +2,13 @@ package com.fi.androidbaseproject.base
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.fi.androidbaseproject.R
-import com.fi.androidbaseproject.utils.Utils
+import com.fi.androidbaseproject.utils.PrefManager
 
 /**
  ****************************************
@@ -23,12 +21,11 @@ created by -fi-
 
 abstract class BaseFragment : Fragment() {
     protected lateinit var activity: AppCompatActivity
+    protected lateinit var prefManager: PrefManager
 
-    protected abstract fun getLayoutResource(): Int
+    protected abstract fun setLayoutResource(): Int
 
-    protected abstract fun getToolbarColor(): Int?
-
-    protected abstract fun mainCode()
+    protected abstract fun initUI()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,25 +33,14 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
-        return inflater.inflate(getLayoutResource(), container, false)
+        return inflater.inflate(setLayoutResource(), container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        d(Utils.tag, getToolbarColor().toString())
-
-        mainCode()
-
-        if (getToolbarColor() == null) {
-            activity.window.statusBarColor =
-                ContextCompat.getColor(activity, R.color.colorPrimaryDark)
-
-        } else {
-            getToolbarColor()?.let {
-                activity.window.statusBarColor = it
-            }
-        }
+        prefManager = PrefManager(activity)
+        initUI()
     }
 
     override fun onAttach(context: Context) {

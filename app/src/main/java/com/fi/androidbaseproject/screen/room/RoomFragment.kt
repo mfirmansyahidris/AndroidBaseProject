@@ -2,6 +2,7 @@ package com.fi.androidbaseproject.screen.room
 
 import com.fi.androidbaseproject.R
 import com.fi.androidbaseproject.base.BaseFragment
+import kotlinx.android.synthetic.main.toolbar_main.*
 
 /**
  ****************************************
@@ -13,12 +14,10 @@ created by -fi-
  */
 
 class RoomFragment : BaseFragment(){
-    override fun getLayoutResource(): Int = R.layout.fragment_room
+    override fun setLayoutResource(): Int = R.layout.fragment_room
 
-    override fun getToolbarColor(): Int? = 0
-
-    override fun mainCode() {
-
+    override fun initUI() {
+        activity.toolbar.title = getString(R.string.menu_room)
     }
 
 }

@@ -19,7 +19,7 @@ created by -fi-
 
 interface Api{
     @GET("0bd6a069-2918-4fa7-b9c8-9485feb0d529")
-    fun topic(@HeaderMap headerMap: LinkedHashMap<String, String>, @QueryMap queryMap: LinkedHashMap<String, String>):
+    fun getName(@HeaderMap headerMap: LinkedHashMap<String, String>, @QueryMap queryMap: LinkedHashMap<String, String>):
             Observable<
                     Response<
                             BaseResponse<List<Name>>
