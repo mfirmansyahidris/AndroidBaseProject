@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- page or activity margin -->
+    <dimen name="activity_margin_xxxLong">32dp</dimen>
+    <dimen name="activity_margin_xxLong">28dp</dimen>
+    <dimen name="activity_margin_xLong">24dp</dimen>
+    <dimen name="activity_margin_long">20dp</dimen>
+    <dimen name="activity_margin_normal">16dp</dimen>
+    <dimen name="activity_margin_medium">12dp</dimen>
+    <dimen name="activity_margin_short">8dp</dimen>
+    <dimen name="activity_margin_xShort">6dp</dimen>
+
+    <!--elevation-->
+    <dimen name="activity_elevation_normal">5dp</dimen>
+    <dimen name="activity_elevation_small">3dp</dimen>
+
+    <!--corner radius-->
+    <dimen name="corner_radius_normal">8dp</dimen>
+
+    <!--Font Size-->
+    <dimen name="text_small">9.0sp</dimen>
+    <dimen name="text_medium">12.0sp</dimen>
+    <dimen name="text_normal">14.0sp</dimen>
+    <dimen name="text_large">18.0sp</dimen>
+    <dimen name="text_xLarge">21.0sp</dimen>
+    <dimen name="text_xxLarge">23.0sp</dimen>
+    <dimen name="text_xxxLarge">26.0sp</dimen>
+
+    <!-- widget dimens -->
+    <!--progressbar-->
+    <dimen name="pb_normal">30dp</dimen>
+    <dimen name="hpb_normal">6dp</dimen>
+
+</resources>
