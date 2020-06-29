@@ -6,4 +6,12 @@
     <string name="dialog_btn_no">No</string>
     <string name="dialog_btn_ok">OK</string>
     <string name="dialog_btn_cancel">Cancel</string>
+
+    <!--menu-->
+    <string name="menu_api">API</string>
+    <string name="menu_room">Room Database</string>
+    <string name="menu_about">About</string>
+
+    <!--about-->
+    <string name="about">create by mFirmansyah Idris / manca.fi\nhttps://github.com/mfirmansyahidris</string>
 </resources>
