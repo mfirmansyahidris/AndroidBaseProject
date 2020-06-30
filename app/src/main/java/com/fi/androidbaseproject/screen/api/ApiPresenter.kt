@@ -18,7 +18,7 @@ class ApiPresenter(
     private val view: ApiView.View
 ) : ApiView.Presenter {
 
-    private var mCompositeDisposable: CompositeDisposable? = null
+    private var mCompositeDisposable = CompositeDisposable()
 
     override fun getData() {
         val headerMap = linkedMapOf<String, String>()
@@ -26,8 +26,7 @@ class ApiPresenter(
         view.onProcess()
         try {
             val service = NetworkServices.create()
-            mCompositeDisposable = CompositeDisposable()
-            mCompositeDisposable?.add(
+            mCompositeDisposable.add(
                 service.getName(headerMap, queryMap)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())

@@ -2,6 +2,8 @@ package com.fi.androidbaseproject.utils
 
 import androidx.room.*
 import com.fi.androidbaseproject.models.Name
+import io.reactivex.Completable
+import io.reactivex.Observable
 
 /**
  ****************************************
@@ -15,10 +17,10 @@ created by -fi-
 @Dao
 interface NameDao{
     @Query("SELECT * FROM name")
-    fun getAll(): List<Name>
+    fun getAll(): Observable<List<Name>>
 
     @Insert
-    fun insertAll(vararg name: Name)
+    fun insertAll(vararg name: Name): Completable
 
     @Delete
     fun delete(name: Name)

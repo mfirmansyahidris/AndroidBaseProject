@@ -15,7 +15,7 @@ created by -fi-
 
 @Entity
 data class Name(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
 
     @ColumnInfo(name = "name")
