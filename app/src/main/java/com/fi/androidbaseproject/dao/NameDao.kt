@@ -1,4 +1,4 @@
-package com.fi.androidbaseproject.utils
+package com.fi.androidbaseproject.dao
 
 import androidx.room.*
 import com.fi.androidbaseproject.models.Name

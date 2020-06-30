@@ -1,7 +1,7 @@
 package com.fi.androidbaseproject.screen.room
 
 import com.fi.androidbaseproject.models.Name
-import com.fi.androidbaseproject.utils.AppDatabase
+import com.fi.androidbaseproject.base.BaseStorage
 
 /**
  ****************************************
@@ -22,8 +22,8 @@ interface RoomView {
     }
 
     interface Presenter {
-        fun saveData(db: AppDatabase, name: Name)
-        fun getData(db: AppDatabase)
+        fun saveData(db: BaseStorage, name: Name)
+        fun getData(db: BaseStorage)
         fun dispose()
     }
 }

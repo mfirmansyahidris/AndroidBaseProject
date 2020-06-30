@@ -1,7 +1,7 @@
 package com.fi.androidbaseproject.screen.room
 
 import com.fi.androidbaseproject.models.Name
-import com.fi.androidbaseproject.utils.AppDatabase
+import com.fi.androidbaseproject.base.BaseStorage
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -21,7 +21,7 @@ class RoomPresenter(
 
     private var mCompositeDisposable = CompositeDisposable()
 
-    override fun saveData(db: AppDatabase, name: Name) {
+    override fun saveData(db: BaseStorage, name: Name) {
         mCompositeDisposable.add(
             db.nameDao().insertAll(name)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -34,7 +34,7 @@ class RoomPresenter(
         )
     }
 
-    override fun getData(db: AppDatabase) {
+    override fun getData(db: BaseStorage) {
         mCompositeDisposable.add(
             db.nameDao().getAll()
                 .observeOn(AndroidSchedulers.mainThread())

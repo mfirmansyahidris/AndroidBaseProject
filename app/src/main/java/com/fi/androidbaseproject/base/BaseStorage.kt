@@ -1,10 +1,11 @@
-package com.fi.androidbaseproject.utils
+package com.fi.androidbaseproject.base
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.fi.androidbaseproject.BuildConfig
+import com.fi.androidbaseproject.dao.NameDao
 import com.fi.androidbaseproject.models.Name
 
 /**
@@ -17,21 +18,25 @@ created by -fi-
  */
 
 @Database(entities = [Name::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
+abstract class BaseStorage : RoomDatabase() {
     abstract fun nameDao(): NameDao
 
     companion object {
         @Volatile
-        private var instance: AppDatabase? = null
+        private var instance: BaseStorage? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: buildDatabase(context).also { instance = it }
+        operator fun invoke(context: Context) = instance
+            ?: synchronized(LOCK) {
+            instance
+                ?: buildDatabase(
+                    context
+                ).also { instance = it }
         }
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
             context,
-            AppDatabase::class.java, "${BuildConfig.APPLICATION_NAME}.db"
+            BaseStorage::class.java, "${BuildConfig.APPLICATION_NAME}.db"
         )
             .build()
     }
