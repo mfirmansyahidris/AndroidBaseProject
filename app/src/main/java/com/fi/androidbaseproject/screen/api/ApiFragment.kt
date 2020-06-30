@@ -37,15 +37,15 @@ class ApiFragment : BaseFragment(), ApiView.View{
     }
 
     override fun onProcess() {
-        pb?.visibility = View.VISIBLE
-        rv?.visibility = View.GONE
-        tv_msg?.visibility = View.GONE
+        pb.visibility = View.VISIBLE
+        rv.visibility = View.GONE
+        tv_msg.visibility = View.GONE
     }
 
     override fun onSuccess(result: List<Name>?) {
-        pb?.visibility = View.GONE
-        tv_msg?.visibility = View.GONE
-        rv?.visibility = View.VISIBLE
+        pb.visibility = View.GONE
+        tv_msg.visibility = View.GONE
+        rv.visibility = View.VISIBLE
 
         result?.let {
             adapter.data = it
@@ -53,11 +53,16 @@ class ApiFragment : BaseFragment(), ApiView.View{
     }
 
     override fun onError(code: Int?, message: String) {
-        pb?.visibility = View.GONE
-        tv_msg?.visibility = View.VISIBLE
-        rv?.visibility = View.GONE
+        pb.visibility = View.GONE
+        tv_msg.visibility = View.VISIBLE
+        rv.visibility = View.GONE
 
-        tv_msg?.text = message
+        tv_msg.text = message
+    }
+
+    override fun onDetach() {
+        presenter.dispose()
+        super.onDetach()
     }
 
 }

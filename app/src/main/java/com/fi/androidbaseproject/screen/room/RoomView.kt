@@ -24,5 +24,6 @@ interface RoomView {
     interface Presenter {
         fun saveData(db: AppDatabase, name: Name)
         fun getData(db: AppDatabase)
+        fun dispose()
     }
 }

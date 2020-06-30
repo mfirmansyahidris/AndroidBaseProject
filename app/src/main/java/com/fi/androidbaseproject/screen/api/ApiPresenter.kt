@@ -44,4 +44,8 @@ class ApiPresenter(
             view.onError(0, e.message.toString())
         }
     }
+
+    override fun dispose() {
+        mCompositeDisposable.dispose()
+    }
 }

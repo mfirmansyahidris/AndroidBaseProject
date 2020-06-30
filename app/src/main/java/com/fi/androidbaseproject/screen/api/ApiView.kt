@@ -20,5 +20,6 @@ interface ApiView {
 
     interface Presenter {
         fun getData()
+        fun dispose()
     }
 }

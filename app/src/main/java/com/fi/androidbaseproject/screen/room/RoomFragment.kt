@@ -48,4 +48,9 @@ class RoomFragment : BaseFragment(), RoomView.View {
         Log.e(Utils.tag, message)
     }
 
+    override fun onDetach() {
+        presenter.dispose()
+        super.onDetach()
+    }
+
 }

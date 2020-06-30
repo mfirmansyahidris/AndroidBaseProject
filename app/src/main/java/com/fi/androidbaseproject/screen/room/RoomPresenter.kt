@@ -46,4 +46,8 @@ class RoomPresenter(
                 })
         )
     }
+
+    override fun dispose() {
+        mCompositeDisposable.dispose()
+    }
 }
