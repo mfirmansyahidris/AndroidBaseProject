@@ -5,7 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.room.Room
+import com.fi.androidbaseproject.BuildConfig
 import com.fi.androidbaseproject.R
+import com.fi.androidbaseproject.utils.AppDatabase
 import com.fi.androidbaseproject.utils.PrefManager
 
 /**
@@ -20,6 +23,7 @@ created by -fi-
 abstract class BaseActivity : AppCompatActivity() {
     protected var toolbar: Toolbar? = null
     protected lateinit var prefManager: PrefManager
+    protected lateinit var db: AppDatabase
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +36,8 @@ abstract class BaseActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(setToolbarActionButton())
         }
         prefManager = PrefManager(this)
+        db = AppDatabase(this)
+
         initUI()
     }
 

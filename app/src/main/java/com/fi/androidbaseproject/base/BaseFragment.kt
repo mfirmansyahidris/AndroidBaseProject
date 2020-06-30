@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.fi.androidbaseproject.utils.AppDatabase
 import com.fi.androidbaseproject.utils.PrefManager
 
 /**
@@ -22,6 +23,7 @@ created by -fi-
 abstract class BaseFragment : Fragment() {
     protected lateinit var activity: AppCompatActivity
     protected lateinit var prefManager: PrefManager
+    protected lateinit var db: AppDatabase
 
     protected abstract fun setLayoutResource(): Int
 
@@ -40,6 +42,7 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(activity)
+        db = AppDatabase(activity)
         initUI()
     }
 

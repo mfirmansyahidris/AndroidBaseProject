@@ -1,5 +1,9 @@
 package com.fi.androidbaseproject.models
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 /**
  ****************************************
 created by -fi-
@@ -9,7 +13,11 @@ created by -fi-
  ****************************************
  */
 
+@Entity
 data class Name(
+    @PrimaryKey
     val id: Int? = null,
+
+    @ColumnInfo(name = "name")
     val name: String? = null
 )
