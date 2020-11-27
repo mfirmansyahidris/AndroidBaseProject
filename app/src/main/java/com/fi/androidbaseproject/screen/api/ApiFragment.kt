@@ -33,7 +33,7 @@ class ApiFragment : BaseFragment(), ApiView.View{
         rv.adapter = adapter
 
         presenter = ApiPresenter(this)
-        presenter.getData()
+        presenter.getData(activity)
     }
 
     override fun onProcess() {

@@ -1,6 +1,8 @@
 package com.fi.androidbaseproject.network
 
+import android.content.Context
 import com.fi.androidbaseproject.BuildConfig
+import com.fi.androidbaseproject.utils.PrefManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -31,13 +33,22 @@ object NetworkServices {
         return builder.build()
     }
 
-    fun create(): Api {
-        val retrofit = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(okHttpClient())
-            .baseUrl(BuildConfig.BASE_URL)
-            .build()
+    fun create(context: Context? = null): Api {
+        val retrofit: Retrofit = if (context == null) {
+            Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient())
+                .baseUrl(BuildConfig.BASE_URL)
+                .build()
+        } else {
+            Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient())
+                .baseUrl(PrefManager(context).getGeneralSetup()?.baseUrl ?: BuildConfig.BASE_URL)
+                .build()
+        }
         return retrofit.create(Api::class.java)
     }
 }

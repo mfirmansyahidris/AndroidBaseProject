@@ -1,5 +1,6 @@
 package com.fi.androidbaseproject.screen.api
 
+import android.content.Context
 import com.fi.androidbaseproject.models.Name
 
 /**
@@ -19,7 +20,7 @@ interface ApiView {
     }
 
     interface Presenter {
-        fun getData()
+        fun getData(context: Context)
         fun dispose()
     }
 }

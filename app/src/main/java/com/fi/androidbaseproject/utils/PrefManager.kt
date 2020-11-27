@@ -3,6 +3,8 @@ package com.fi.androidbaseproject.utils
 import android.content.Context
 import android.content.SharedPreferences
 import com.fi.androidbaseproject.BuildConfig
+import com.fi.androidbaseproject.models.ApplicationGeneralSetup
+import com.google.gson.Gson
 
 /**
  ****************************************
@@ -39,6 +41,14 @@ class PrefManager(private val context: Context) {
         val editor = sharedPref.edit()
         editor.putBoolean(key, value)
         editor.apply()
+    }
+
+    fun setGeneralSetup(generalSetup: ApplicationGeneralSetup) {
+        setString("GENERAL_SETUP", Gson().toJson(generalSetup, ApplicationGeneralSetup::class.java))
+    }
+
+    fun getGeneralSetup(): ApplicationGeneralSetup? {
+        return Gson().fromJson(getString("GENERAL_SETUP"), ApplicationGeneralSetup::class.java)
     }
 
 

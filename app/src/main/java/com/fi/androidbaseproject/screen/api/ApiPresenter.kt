@@ -1,5 +1,6 @@
 package com.fi.androidbaseproject.screen.api
 
+import android.content.Context
 import com.fi.androidbaseproject.network.NetworkServices
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -20,12 +21,12 @@ class ApiPresenter(
 
     private var mCompositeDisposable = CompositeDisposable()
 
-    override fun getData() {
+    override fun getData(context: Context) {
         val headerMap = linkedMapOf<String, String>()
         val queryMap = linkedMapOf<String, String>()
         view.onProcess()
         try {
-            val service = NetworkServices.create()
+            val service = NetworkServices.create(context)
             mCompositeDisposable.add(
                 service.getName(headerMap, queryMap)
                     .observeOn(AndroidSchedulers.mainThread())

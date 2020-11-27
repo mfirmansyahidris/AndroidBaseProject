@@ -16,7 +16,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "APPLICATION_NAME", '"AndroidBaseProject"')
-        buildConfigField("String", "BASE_URL", '"https://run.mocky.io/v3/"')
+        buildConfigField("String", "BASE_URL", '"https://raw.githubusercontent.com/mfirmansyahidris/ProjectsGeneralConfig/master/"')
     }
 
     buildTypes {
